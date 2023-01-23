@@ -21,7 +21,6 @@ const Login = () => {
   const submitHandler = e => {
     e.preventDefault();
     dispatch(login(email, password));
-    console.log(email, password);
   };
 
   return (
