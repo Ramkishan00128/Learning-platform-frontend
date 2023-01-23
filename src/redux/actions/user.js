@@ -7,13 +7,14 @@ export const login = (email, password) => async dispatch => {
 
     const { data } = await axios.post(
       `${server}/login`,
-      { email, password },
+
       {
         withCredentials: true,
-        // headers: {
-        //   'Content-Type': 'application/x-www-form-urlencoded',
-        // },
-      }
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+      { email, password }
     );
 
     dispatch({ type: 'loginSuccess', payload: data });
