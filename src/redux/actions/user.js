@@ -10,9 +10,9 @@ export const login = (email, password) => async dispatch => {
       { email, password },
       {
         withCredentials: true,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+        // headers: {
+        //   'Content-Type': 'application/x-www-form-urlencoded',
+        // },
       }
     );
 
@@ -28,9 +28,9 @@ export const register = formdata => async dispatch => {
 
     const { data } = await axios.post(`${server}/register`, formdata, {
       withCredentials: true,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+      // headers: {
+      //   'Content-Type': 'multipart/form-data',
+      // },
     });
 
     dispatch({ type: 'registerSuccess', payload: data });
@@ -45,9 +45,9 @@ export const getMyProfile = () => async dispatch => {
 
     const { data } = await axios.get(`${server}/me`, {
       withCredentials: true,
-      headers: {
-        'Content-Type': 'Application/json',
-      },
+      // headers: {
+      //   'Content-Type': 'Application/json',
+      // },
     });
 
     dispatch({ type: 'loadUserSuccess', payload: data.user });
