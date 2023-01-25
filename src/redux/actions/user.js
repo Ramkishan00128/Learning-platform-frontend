@@ -7,14 +7,13 @@ export const login = (email, password) => async dispatch => {
 
     const { data } = await axios.post(
       `${server}/login`,
-      { email, password },
-      {
-        withCredentials: true,
-        headers: {
-          Authorization: 'Bearer token',
-          'Content-Type': 'application/json',
-        },
-      }
+      { email, password }
+      // {
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   withCredentials: true,
+      // }
     );
 
     dispatch({ type: 'loginSuccess', payload: data });
@@ -29,9 +28,9 @@ export const register = formdata => async dispatch => {
 
     const { data } = await axios.post(`${server}/register`, formdata, {
       withCredentials: true,
-      // headers: {
-      //   'Content-Type': 'multipart/form-data',
-      // },
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     });
 
     dispatch({ type: 'registerSuccess', payload: data });
@@ -45,7 +44,7 @@ export const getMyProfile = () => async dispatch => {
     dispatch({ type: 'loadUserRequest' });
 
     const { data } = await axios.get(`${server}/me`, {
-      withCredentials: true,
+      // withCredentials: true,
       // headers: {
       //   'Content-Type': 'Application/json',
       // },
