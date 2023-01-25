@@ -7,14 +7,14 @@ export const login = (email, password) => async dispatch => {
 
     const { data } = await axios.post(
       `${server}/login`,
-
+      { email, password },
       {
         withCredentials: true,
         headers: {
+          Authorization: 'Bearer token',
           'Content-Type': 'application/json',
         },
-      },
-      { email, password }
+      }
     );
 
     dispatch({ type: 'loginSuccess', payload: data });
